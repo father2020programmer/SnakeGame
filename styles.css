@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: #22c900;
+    font-size: 5rem;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
+button{
+    height: 3rem;
+    width: 10rem;
+    background-color: #22c900;
+    font-size: 2.5rem;
+    margin: 2rem;
+}
+
+canvas {
+    height: 100vh;
+    width: 100vw;
+    background-color: black; 
+    position: absolute;   
+}
+
+.show {
+    display: flex;
+}
