@@ -38,35 +38,49 @@ function keydownHandler(e){
 function moveSnake(){
     if(leftpress){
         snakeX -= move;
-        tailx = snakeX - tailWidth - tailPadding;
     } else if(rightpress){
         snakeX += move;
-        tailx = snakeX + tailWidth + tailPadding;
     } else if(uppress){
         snakeY -= move;
-        taily = snakeY - tailHeight - tailPadding;
     } else if(downpress){
         snakeY += move;
-        taily = snakeY + tailHeight + tailPadding;
-
     }
 }
 
-// for(let i=0; i<tailLength; i++){
-//     tail[i] = {x: 0, y: 0};
-// }
+for(let i=0; i<tailLength; i++){
+    tail[i] = {x: 1, y: 1};
+} 
 
-function drawTail(){
-    for(let i=0; i<tailLength; i++){
-        let tailx = (i*(tailWidth-tailPadding)) - snakeX;
-        let taily = snakeY;
-        //tail[i].x = tailx;
-        //tail[i].y = taily;
+function drawTail(){    
+
+    for(let d=0; d<tail.length; d++){            
+        let tailx = tailMoveX(d) || snakeX - 5;
+        let taily = tailMoveY(d) || snakeY; 
+        tail[d].x = tailx;
+        tail[d].y = taily;       
         ctx.beginPath();
-        ctx.rect(tailx, taily, 20, 20);
+        ctx.arc(tailx, taily, tailRadius, 0, Math.PI*2);
         ctx.fillStyle = '#22c900';
         ctx.fill();
         ctx.closePath();
+        }
+
+            
+} 
+
+function tailMoveX(d){
+    if(leftpress){
+        return (snakeX - 5) + ((d * tailPadding) + (d * tailRadius));
+    } else if(rightpress){
+        return (snakeX - 5) - ((d * tailPadding) + (d * tailRadius));
+    } 
+}
+
+function tailMoveY(d){
+    if(uppress){
+        return snakeY + ((d * tailPadding) + (d * tailRadius));
+    } else if(downpress){
+        return snakeY - ((d * tailPadding) + (d * tailRadius));
     }
 }
 

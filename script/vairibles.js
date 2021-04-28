@@ -2,8 +2,7 @@ const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 const move = 2;
 const tailPadding = 20;
-const tailWidth = 10;
-const tailHeight = 10;
+const tailRadius = 10
 const ememyRadius = 10;
 
 

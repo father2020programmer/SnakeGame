@@ -1,6 +1,6 @@
 function draw(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawSnake();
+    drawSnake();    
     drawTail();
     moveSnake();
     drawEnemy();
@@ -9,4 +9,4 @@ function draw(){
 
 document.addEventListener('keydown', keydownHandler, false);
 
-setInterval(draw, 10);
+setInterval(draw, 20);
