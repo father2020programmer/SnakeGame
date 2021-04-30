@@ -12,7 +12,8 @@
     display: none;
     flex-direction: column;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
+    cursor: default;    
 }
 
 button{
@@ -23,11 +24,18 @@ button{
     margin: 2rem;
 }
 
+button:hover {
+    background-color: black;
+    color: #22c900;
+    border: 2px solid #22c900;
+}
+
 canvas {
     width: 100vw;
     height: 100vh;
     background-color: black;
-    position: absolute; 
+    position: absolute;
+    display: none; 
 }
 
 .show {

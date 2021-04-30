@@ -1,6 +1,32 @@
+function startGame(){
+    if(restartGame){
+        loserScreen.classList.add('show');
+        restartGame = false;
+    }else {
+        startScreen.classList.add('show');
+    }
+}
+    
+
+function startHandler(){
+    startScreen.classList.remove('show');    
+    canvas.classList.add('show');
+}
+
+function winnerHandler(){
+    winnerScreen.classList.remove('show');
+    canvas.classList.add('show');
+}
+
+function loserHandler(){    
+    loserScreen.classList.remove('show');
+    canvas.classList.add('show');
+}
+    
+
 function drawSnake(){
     ctx.beginPath();
-    ctx.rect(snakeX, snakeY, 20, 20);
+    ctx.arc(snakeX, snakeY, 10, 0, Math.PI*2);
     ctx.fillStyle = '#22c900';
     ctx.fill();
     ctx.closePath();
@@ -78,9 +104,9 @@ function tailMoveX(d){
 
 function tailMoveY(d){
     if(uppress){
-        return snakeY + ((d * tailPadding) + (d * tailRadius));
+        return (snakeY + 5) + ((d * tailPadding) + (d * tailRadius));
     } else if(downpress){
-        return snakeY - ((d * tailPadding) + (d * tailRadius));
+        return (snakeY + 5) - ((d * tailPadding) + (d * tailRadius));
     }
 }
 
@@ -96,4 +122,11 @@ function drawEnemy(){
     ctx.fillStyle = 'red';
     ctx.fill();
     ctx.closePath();
+}
+
+function wallCollision(){
+    if(snakeX < 0 || snakeX > canvas.width || snakeY < 0 || snakeY > canvas.height){
+        restartGame = true;
+        startGame;              
+    }
 }
